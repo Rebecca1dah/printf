@@ -36,11 +36,15 @@ int _printf(const char *format, ...)
 			putchr('%');
 
 		}
+		else
+		{
+			putchr(*format);
+			i++;
+		}
 		count += 1;
 	}
 
 	va_end(args);
 	return (count);
-
 
 }
