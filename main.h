@@ -7,5 +7,6 @@
 
 int putchr(char c);
 int _printf(const char *format, ...);
+int putss(char *c);
 
 #endif
