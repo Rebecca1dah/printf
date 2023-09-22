@@ -34,13 +34,13 @@ int _printf(const char *format, ...)
 		else if (format[i + 1] == '%')
 		{
 			putchr('%');
-
-		}
-		else
-		{
-			putchr(*format);
 			i++;
 		}
+		else if ((format[i + 1] == 'd') || (format[i + 1] == 'i'))
+                {
+                        get_integer(va_arg(args, int));
+			i++;
+                }
 		count += 1;
 	}
 

@@ -8,5 +8,6 @@
 int putchr(char c);
 int _printf(const char *format, ...);
 int putss(char *c);
+void get_integer(int number);
 
 #endif
