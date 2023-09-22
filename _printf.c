@@ -39,11 +39,6 @@ int _printf(const char *format, ...)
 			get_integer(va_arg(args, int));
 			z++;
 		}
-		else if ((format[z + 1] == 'u') || (format[z + 1] == 'o') || (format[z + 1] == 'x') || (format[z + 1] == 'X'))
-		{
-			get_integer(va_arg(args, int));
-			z++;
-		}
 		count += 1;
 	}
 	va_end(args);
