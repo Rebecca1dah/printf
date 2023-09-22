@@ -7,7 +7,7 @@
 
 int putchr(char c);
 int _printf(const char *format, ...);
-int putss(char *c);
+int putss(char *str);
 void get_integer(int number);
 
 #endif
