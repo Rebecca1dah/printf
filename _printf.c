@@ -7,44 +7,45 @@
  */
 int _printf(const char *format, ...)
 {
-        unsigned int i, r_count, count = 0;
+	unsigned int z, r_count, count = 0;
+	va_list args;
 
-        va_list args;
+	va_start(args, format);
 
-        va_start(args, format);
-
-
-        for (i = 0; format[i] != '\0'; i++)
-        {
-                if (format[i] != '%')
-                {
-                        putchr(format[i]);
-                }
-                else if (format[i + 1] == 'c')
-                {
-                        putchr(va_arg(args, int));
-                        i++;
-                }
-                else if (format[i + 1] == 's')
-                {
-                        r_count = putss(va_arg(args, char *));
-                        i++;
-                        count += (r_count - 1);
-                }
-                else if (format[i + 1] == '%')
-                {
-                        putchr('%');
-                        i++;
-                }
-                else if ((format[i + 1] == 'd') || (format[i + 1] == 'i'))
-                {
-                        get_integer(va_arg(args, int));
-                        i++;
-                }
-                count += 1;
-        }
-
-        va_end(args);
-        return (count);
-
+	for (i = 0; format[z] != '\0'; z++)
+	{
+		if (format[z] != '%')
+		{
+			putchr(format[z]);
+		}
+		else if (format[z + 1] == 'c')
+		{
+			putchr(va_arg(args, int));
+			z++;
+		}
+		else if (format[z + 1] == 's')
+		{
+			r_count = putss(va_arg(args, char *));
+			z++;
+			count += (r_count - 1);
+		}
+		else if (format[z + 1] == '%')
+		{
+			putchr('%');
+			z++;
+		}
+		else if ((format[z + 1] == 'd') || (format[z + 1] == 'i'))
+		{
+			get_integer(va_arg(args, int));
+			z++;
+		}
+		else if ((format[z + 1] == 'u') || (format[z + 1] == 'o') || (format[z + 1] == 'x') || (format[z + 1] == 'X'))
+		{
+			get_integer(va_arg(args, int));
+			z++;
+		}
+		count += 1;
+	}
+	va_end(args);
+	return (count);
 }
